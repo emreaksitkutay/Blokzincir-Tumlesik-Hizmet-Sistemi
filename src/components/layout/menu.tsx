@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { useWallet } from "@solana/wallet-adapter-react";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import classNames from "classnames";
@@ -9,7 +10,36 @@ type Props = {
 
 export function Menu({ twitterHandle, className }: Props) {
   const { connected } = useWallet();
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [hover, setHover] = useState(false);
   const menuClasses = classNames("menu", className);
+
+  const dropdownStyle: React.CSSProperties = {
+    display: isDropdownOpen ? "block" : "none",
+    position: "absolute",
+    backgroundColor: "#f9f9f9",
+    minWidth: "160px",
+    boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)",
+    zIndex: 1,
+    padding: "12px 16px",
+    borderRadius: "4px",
+    marginTop: "45px",
+  };
+
+  const linkStyle: React.CSSProperties = {
+    color: "#333",
+    textDecoration: "none",
+    padding: "8px 12px",
+    display: "block",
+  };
+
+  const buttonStyle: React.CSSProperties = hover ? {
+    backgroundColor: "#ddd",
+    color: "#333",
+  } : {
+    backgroundColor: "#f9f9f9", // Normal durumda buton arkaplan rengi
+    color: "#333", // Normal durumda buton yazı rengi
+  };
 
   return (
     <ul className={menuClasses}>
@@ -22,36 +52,27 @@ export function Menu({ twitterHandle, className }: Props) {
                 target="_blank"
                 rel="noreferrer"
                 className="btn-ghost lg:btn mb-1 lg:mr-1 lg:mb-0"
+                style={{ color: "#333" }}
               >
                 @{twitterHandle}
               </a>
             </li>
           )}
-          <a
-              href="/tarim" 
+          <li style={{ position: 'relative' }}>
+            <button
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              onMouseEnter={() => setHover(true)}
+              onMouseLeave={() => setHover(false)}
               className="btn-ghost lg:btn mb-1 lg:mr-1 lg:mb-0"
-              target="_blank"
-              rel="noopener noreferrer"
+              style={buttonStyle}
             >
-              TARIM
-            </a>
-          <a
-              href="/enabiz" 
-              className="btn-ghost lg:btn mb-1 lg:mr-1 lg:mb-0"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GSB
-            </a>
-          <li>
-            <a
-              href="/enabiz" 
-              className="btn-ghost lg:btn mb-1 lg:mr-1 lg:mb-0"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              e-nabız
-            </a>
+              Hizmetler
+            </button>
+            <div style={dropdownStyle}>
+              <li><a href="/tarim" style={linkStyle}>Çevre, Tarım ve Hayvancılık</a></li>
+              <li><a href="/gsb" style={linkStyle}>Gençlik ve Spor Bakanlığı</a></li>
+              <li><a href="/saglik" style={linkStyle}>Sağlık</a></li>
+            </div>
           </li>
         </>
       )}
