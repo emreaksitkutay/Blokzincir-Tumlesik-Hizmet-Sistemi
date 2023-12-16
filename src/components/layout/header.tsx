@@ -10,12 +10,14 @@ export function Header({ twitterHandle }: Props) {
   return (
     <div className="navbar mb-6 shadow-lg bg-neutral text-neutral-content rounded-box">
       <div className="navbar-start">
-        <div className="px-2 mx-2">
-          <span className="text-sm md:text-lg font-bold">
-          Blokzincir Tümleşik Hizmetler Sistemi
+        <div className="flex items-center px-2 mx-2">
+          <img src="/logo.png" alt="Logo" className="h-32 w-32 mr-2" /> 
+          <span className="text-sm md:text-lg font-bold mx-4">
+            Blokzincir Tümleşik Hizmetler Sistemi
           </span>
         </div>
       </div>
+
 
       <div className="navbar-end">
         <div className="hidden lg:block">

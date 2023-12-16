@@ -23,23 +23,23 @@ export const checkTransactionStatus = async (txId) => {
       const txStatus = result && result.result && result.result.value && result.result.value[0];
   
       if (!txStatus) {
-        return "not found";
+        return "Yardım Ödemesi Bulunamadı. Sosyal Yardımlar Genel Müdürlüğü veya Sosyal Yardımlaşma ve Dayanışma Vakfı ile iletişime geçiniz.";
       }
   
       if (txStatus.err) {
-        return "failed";
+        return "Yardım Ödemesi Transfer Edilemedi. Sosyal Yardımlar Genel Müdürlüğü veya Sosyal Yardımlaşma ve Dayanışma Vakfı ile iletişime geçiniz.";
       }
   
       if (txStatus.confirmations === null) {
-        return "finalized";
+        return "Yardım Ödemesi Başarıyla Transfer Edildi.";
       } else if (txStatus.confirmations !== undefined) {
-        return "confirmed";
+        return "Yardım Ödemesi Başarıyla Transfer Edildi.";
       }
   
-      return "pending";
+      return "Yardım Ödemesi Transferi Beklemede. Ödemeler maksimum 3 iş günü içerisinde hesabınıza geçmektedir, eğer geçmezse Sosyal Yardımlar Genel Müdürlüğü veya Sosyal Yardımlaşma ve Dayanışma Vakfı ile iletişime geçiniz.";
     } catch (error) {
       console.error("Error fetching transaction status:", error);
-      return "error";
+      return "Hatalı Giriş.";
     }
   };
   

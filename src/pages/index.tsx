@@ -8,13 +8,8 @@ import { DrawerContainer } from "@components/layout/drawer-container";
 import { ButtonState } from "@components/home/button";
 import { Menu } from "@components/layout/menu";
 import { TwitterResponse } from "@pages/api/twitter/[key]";
-import { TxConfirmData } from "@pages/api/tx/confirm";
-import { TxCreateData } from "@pages/api/tx/create";
-import { TxSendData } from "@pages/api/tx/send";
 import { useWallet } from "@solana/wallet-adapter-react";
-import { PublicKey, Transaction } from "@solana/web3.js";
 import { useDataFetch } from "@utils/use-data-fetch";
-import { toast } from "react-hot-toast";
 import { Footer } from "@components/layout/footer";
 
 const Home: NextPage = () => {

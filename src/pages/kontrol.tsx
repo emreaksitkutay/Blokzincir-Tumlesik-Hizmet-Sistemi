@@ -1,4 +1,3 @@
-// pages/kontrol.tsx
 import type { NextPage } from "next";
 import Head from "next/head";
 import React, { useState } from "react";
@@ -8,26 +7,6 @@ import { PageContainer } from "@components/layout/page-container";
 import { DrawerContainer } from "@components/layout/drawer-container";
 import { Menu } from "@components/layout/menu";
 import { Footer } from "@components/layout/footer";
-
-const inputStyle = {
-  padding: "10px",
-  border: "1px solid #ccc",
-  borderRadius: "4px",
-  marginRight: "10px",
-};
-
-const buttonStyle = {
-  padding: "10px 20px",
-  background: "#007bff",
-  color: "#fff",
-  border: "none",
-  borderRadius: "4px",
-  cursor: "pointer",
-};
-
-const statusStyle = {
-  marginTop: "10px",
-};
 
 const Kontrol: NextPage = () => {
   const [txId, setTxId] = useState("");
@@ -46,21 +25,24 @@ const Kontrol: NextPage = () => {
       <DrawerContainer>
         <PageContainer>
           <Header />
-          {/* İşlem Durumu Kontrolü İçeriği */}
-          <div>
-            <h1>İşlem Durumu Kontrolü</h1>
+          <main style={{ textAlign: 'center', margin: '0 auto', maxWidth: '500px' }}>
+            <h1 style={{ fontSize: '24px', margin: '20px 0' }}>İşlem Durumu Kontrolü</h1>
+            <p style={{ fontSize: '18px', margin: '20px 0' }}>Lütfen size SMS olarak gelen İşlem Kimliğini gerekli yere giriniz.</p>
             <input
               type="text"
               value={txId}
               onChange={(e) => setTxId(e.target.value)}
               placeholder="İşlem Kimliğini Girin"
-              style={inputStyle}
+              style={{ padding: '10px', border: '1px solid #ccc', borderRadius: '4px', marginRight: '10px', width: '100%', boxSizing: 'border-box' }}
             />
-            <button onClick={handleCheckStatus} style={buttonStyle}>
+            <button
+              onClick={handleCheckStatus}
+              style={{ padding: '10px 20px', background: '#007bff', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer', width: '100%', marginTop: '10px' }}
+            >
               Durumu Kontrol Et
             </button>
-            {status && <p style={statusStyle}>İşlem Durumu: {status}</p>}
-          </div>
+            {status && <p style={{ marginTop: '10px' }}>İşlem Durumu: {status}</p>}
+          </main>
           <Footer />
         </PageContainer>
         <div className="drawer-side">
