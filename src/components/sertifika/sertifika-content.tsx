@@ -19,7 +19,7 @@ export function SertifikaContent() {
       },
       body: JSON.stringify({
         jsonrpc: '2.0',
-        id: 'my-id',
+        id: 'a',
         method: 'getAssetsByOwner',
         params: {
           ownerAddress: publicKey,
@@ -29,6 +29,10 @@ export function SertifikaContent() {
       }),
     });
     const { result } = await response.json();
+    // console.log(result);
+    
+    // console.log(result.items.length);
+    
 
     setData(result.items)
   };
