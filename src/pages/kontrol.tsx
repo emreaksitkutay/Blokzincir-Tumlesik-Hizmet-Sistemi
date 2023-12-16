@@ -9,44 +9,67 @@ import { DrawerContainer } from "@components/layout/drawer-container";
 import { Menu } from "@components/layout/menu";
 import { Footer } from "@components/layout/footer";
 
+const inputStyle = {
+  padding: "10px",
+  border: "1px solid #ccc",
+  borderRadius: "4px",
+  marginRight: "10px",
+};
+
+const buttonStyle = {
+  padding: "10px 20px",
+  background: "#007bff",
+  color: "#fff",
+  border: "none",
+  borderRadius: "4px",
+  cursor: "pointer",
+};
+
+const statusStyle = {
+  marginTop: "10px",
+};
+
 const Kontrol: NextPage = () => {
-    const [txId, setTxId] = useState("");
-    const [status, setStatus] = useState("");
-  
-    const handleCheckStatus = async () => {
-      const result = await checkTransactionStatus(txId);
-      setStatus(result);
-    };
-  
-    return (
-      <>
-        <Head>
-          <title>İşlem Durumu Kontrolü - Blokzincir Tümleşik Hizmetler Sistemi</title>
-        </Head>
-        <DrawerContainer>
-          <PageContainer>
-            <Header />
-            {/* İşlem Durumu Kontrolü İçeriği */}
-            <div>
-              <h1>İşlem Durumu Kontrolü</h1>
-              <input
-                type="text"
-                value={txId}
-                onChange={(e) => setTxId(e.target.value)}
-                placeholder="İşlem Kimliğini Girin"
-              />
-              <button onClick={handleCheckStatus}>Durumu Kontrol Et</button>
-              {status && <p>İşlem Durumu: {status}</p>}
-            </div>
-            <Footer />
-          </PageContainer>
-          <div className="drawer-side">
-            <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
-            <Menu className="p-4 w-80 bg-base-100 text-base-content" />
-          </div>
-        </DrawerContainer>
-      </>
-    );
+  const [txId, setTxId] = useState("");
+  const [status, setStatus] = useState("");
+
+  const handleCheckStatus = async () => {
+    const result = await checkTransactionStatus(txId);
+    setStatus(result);
   };
-  
-  export default Kontrol;
+
+  return (
+    <>
+      <Head>
+        <title>İşlem Durumu Kontrolü - Blokzincir Tümleşik Hizmetler Sistemi</title>
+      </Head>
+      <DrawerContainer>
+        <PageContainer>
+          <Header />
+          {/* İşlem Durumu Kontrolü İçeriği */}
+          <div>
+            <h1>İşlem Durumu Kontrolü</h1>
+            <input
+              type="text"
+              value={txId}
+              onChange={(e) => setTxId(e.target.value)}
+              placeholder="İşlem Kimliğini Girin"
+              style={inputStyle}
+            />
+            <button onClick={handleCheckStatus} style={buttonStyle}>
+              Durumu Kontrol Et
+            </button>
+            {status && <p style={statusStyle}>İşlem Durumu: {status}</p>}
+          </div>
+          <Footer />
+        </PageContainer>
+        <div className="drawer-side">
+          <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
+          <Menu className="p-4 w-80 bg-base-100 text-base-content" />
+        </div>
+      </DrawerContainer>
+    </>
+  );
+};
+
+export default Kontrol;
