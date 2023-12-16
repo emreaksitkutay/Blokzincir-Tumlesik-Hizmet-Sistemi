@@ -72,6 +72,7 @@ export function Menu({ twitterHandle, className }: Props) {
               <li><a href="/tarim" style={linkStyle}>Çevre, Tarım ve Hayvancılık</a></li>
               <li><a href="/gsb" style={linkStyle}>Gençlik ve Spor Bakanlığı</a></li>
               <li><a href="/saglik" style={linkStyle}>Sağlık</a></li>
+              <li><a href="/kontrol" style={linkStyle}>Yardım Durumu Kontrolü</a></li>
             </div>
           </li>
         </>
