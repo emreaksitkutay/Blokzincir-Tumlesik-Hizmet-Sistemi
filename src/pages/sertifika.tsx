@@ -3,13 +3,12 @@ import Head from "next/head";
 import React from "react";
 import { Header } from "@components/layout/header";
 import { PageContainer } from "@components/layout/page-container";
-import { TahlillerContent } from "@components/tahliller/tahliller-content";
+import { SertifikaContent } from "@components/sertifika/sertifika-content";
 import { DrawerContainer } from "@components/layout/drawer-container";
 import { Menu } from "@components/layout/menu";
 import { Footer } from "@components/layout/footer";
 
-const Tahliller: NextPage = () => {
-  // Tahliller sayfasına özgü durumlar ve fonksiyonlar
+const Sertifika: NextPage = () => {
 
   return (
     <>
@@ -23,7 +22,7 @@ const Tahliller: NextPage = () => {
       <DrawerContainer>
         <PageContainer>
           <Header />
-          <TahlillerContent /> {/* Özel içerik */}
+          <SertifikaContent /> {/* Özel içerik */}
           <Footer />
         </PageContainer>
         <div className="drawer-side">
@@ -35,4 +34,4 @@ const Tahliller: NextPage = () => {
   );
 };
 
-export default Tahliller;
+export default Sertifika;

@@ -10,9 +10,11 @@ import { toast } from "react-hot-toast";
 export function HomeContent() {
   const { publicKey, signMessage } = useWallet();
   const [signState, setSignState] = React.useState<ButtonState>("initial");
-  const { data, error } = useDataFetch<Array<ItemData>>(
+  const { data, error, } = useDataFetch(
     publicKey && signState === "success" ? `/api/items/${publicKey}` : null
   );
+
+
   const prevPublickKey = React.useRef<string>(publicKey?.toBase58() || "");
 
   // Reset the state if wallet changes or disconnects
@@ -92,9 +94,10 @@ export function HomeContent() {
 
   return (
     <div className="grid grid-cols-1">
+
       {hasFetchedData ? (
         <div>
-          <ItemList items={data} />
+          <ItemList items={data as ItemData[]} />
         </div>
       ) : (
         <div className="text-center">

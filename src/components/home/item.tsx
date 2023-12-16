@@ -7,6 +7,7 @@ export type ItemData = {
   name: string;
   tokenAddress: string;
   traits: Array<{ trait_type: string; value: string }>;
+  content : any
 };
 
 type Props = {
@@ -14,20 +15,23 @@ type Props = {
 };
 
 export function Item({ data }: Props) {
-  const name = data.name;
-  const collection = data.collectionName;
 
+  const name = data.content.metadata.name;
+  const collection = data.collectionName;
+  const imgUrl = data.content.links.image
+  
   return (
     <div className="card shadow-xl bg-neutral text-neutral-content">
-      {data.imageUrl && (
+      {imgUrl && (
         <figure className="relative h-80">
           <img
             className="object-cover h-80 w-96 aspect-square	"
-            src={data.imageUrl}
+            src={imgUrl}
             alt={`Picture of ${name}`}
           />
         </figure>
       )}
+      <></>
       <div className="card-body p-4 items-center text-center">
         <h2 className="card-title m-0">{name}</h2>
         {collection && <p>{collection}</p>}

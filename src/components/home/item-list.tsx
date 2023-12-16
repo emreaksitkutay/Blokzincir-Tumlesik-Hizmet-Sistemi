@@ -10,10 +10,11 @@ export function ItemList({ items }: Props) {
     return null;
   }
 
+  
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
       {items.length === 0 ? (
-        <p className="p-4">No NFTs in your wallet</p>
+        <p className="p-4"></p>
       ) : (
         items.map((item) => <Item data={item} key={item.tokenAddress} />)
       )}
