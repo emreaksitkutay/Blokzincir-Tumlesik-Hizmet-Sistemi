@@ -69,8 +69,7 @@ export function Menu({ twitterHandle, className }: Props) {
               Hizmetler
             </button>
             <div style={dropdownStyle}>
-              <li><a href="/sertifika" style={linkStyle}>Sertifika Talebi</a></li>
-              <li><a href="/kontrol" style={linkStyle}>İşlem Durumu Kontrolü</a></li>
+              <li><a href="/sertifika" style={linkStyle}>Sertifikalarım</a></li>
               <li><a href="/hibedao" style={linkStyle}>HibeDAO</a></li>
             </div>
           </li>

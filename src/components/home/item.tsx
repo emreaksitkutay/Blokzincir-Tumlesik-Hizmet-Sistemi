@@ -20,6 +20,7 @@ export function Item({ data }: Props) {
   const name = data.content.metadata.name;
   const collection = data.collectionName;
   const imgUrl = data.content.links.image
+  
   // console.log(data);
   
   // const name = data.info.data.name;
@@ -28,11 +29,11 @@ export function Item({ data }: Props) {
 
   
   return (
-    <div className="card shadow-xl bg-neutral text-neutral-content">
+    <div className="h-80 card shadow-xl bg-neutral text-neutral-content">
       {imgUrl && (
         <figure className="relative h-80">
           <img
-            className="object-cover h-80 w-96 aspect-square	"
+            className="h-100 w-96 aspect-square	"
             src={imgUrl}
             alt={`Picture of ${name}`}
           />
